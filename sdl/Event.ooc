@@ -10,14 +10,24 @@ Keysym: cover from SDL_keysym {
 	sym: extern Int
 }
 
+Active: cover from SDL_ActiveEvent {
+	gain: extern UInt8
+}
+
 Key: cover from SDL_KeyboardEvent {
 	keysym: extern Keysym
+}
+
+Resize: cover from SDL_ResizeEvent {
+	w,h: extern Int
 }
 
 Event: cover from SDL_Event {
 	type: extern Int
 	key: extern Key
 	motion: extern Motion
+	active: extern Active
+	resize: extern Resize
 }
 
 
@@ -283,3 +293,7 @@ SDLEvent: cover {
 
 
 	SDL_MOUSEMOTION : extern const Int
+	
+	SDL_ACTIVEEVENT : extern const Int
+	
+	SDL_VIDEORESIZE : extern const Int

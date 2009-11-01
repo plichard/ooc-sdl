@@ -2,14 +2,14 @@ use sdl
 
 
 	
-	INIT_TIMER : extern(SDL_INIT_TIMER) const Int
-	INIT_AUDIO : extern(SDL_INIT_AUDIO) const Int
-	INIT_VIDEO : extern(SDL_INIT_VIDEO) const Int
-	INIT_CDROM : extern(SDL_INIT_CDROM) const Int
-	INIT_JOYSTICK : extern (SDL_INIT_JOYSTICK) const Int
-	INIT_NOPARACHUTE : extern (SDL_INIT_NOPARACHUTE) const Int
-	INIT_EVENTTHREAD : extern (SDL_INIT_EVENTTHREAD) const Int
-	INIT_EVERYTHING  : extern (SDL_INIT_EVERYTHING) const Int
+	SDL_INIT_TIMER : extern(SDL_INIT_TIMER) const Int
+	SDL_INIT_AUDIO : extern(SDL_INIT_AUDIO) const Int
+	SDL_INIT_VIDEO : extern(SDL_INIT_VIDEO) const Int
+	SDL_INIT_CDROM : extern(SDL_INIT_CDROM) const Int
+	SDL_INIT_JOYSTICK : extern (SDL_INIT_JOYSTICK) const Int
+	SDL_INIT_NOPARACHUTE : extern (SDL_INIT_NOPARACHUTE) const Int
+	SDL_INIT_EVENTTHREAD : extern (SDL_INIT_EVENTTHREAD) const Int
+	SDL_INIT_EVERYTHING  : extern (SDL_INIT_EVERYTHING) const Int
 	
 	SDL_SWSURFACE: extern(SDL_SWSURFACE)	const Int/* Surface is in system memory */
 	SDL_HWSURFACE: extern(SDL_HWSURFACE)	const Int/* Surface is in video memory */
@@ -24,6 +24,7 @@ use sdl
 	SDL_OPENGLBLIT: extern(SDL_OPENGLBLIT)	const Int/* Create an OpenGL rendering context and use it for blitting */
 	SDL_RESIZABLE: extern(SDL_RESIZABLE)	const Int/* This video mode may be resized */
 	SDL_NOFRAME: extern(SDL_NOFRAME)		const Int/* No window caption or edge frame */
+	SDL_GL_DOUBLEBUFFER: extern(SDL_GL_DOUBLEBUFFER) const Int
 	
 	/* Used internally (read-only) */
 	SDL_HWACCEL: extern(SDL_HWACCEL)		const Int/* Blit uses hardware acceleration */
@@ -40,7 +41,7 @@ use sdl
 	}
 	
 	VideoInfo: cover from SDL_VideoInfo {
-		hw_avalaible: extern Int
+		hw_available: extern Int
 		blit_hw: extern Int
 	}
 	
@@ -70,7 +71,9 @@ SDL: cover {
 	showCursor: extern(SDL_ShowCursor) static func(Int)
 	warpMouse: extern(SDL_WarpMouse) static func(Int,Int)
 	WM_GrabInput: extern(SDL_WM_GrabInput) static func(Int)
+	WM_ToggleFullScreen: extern(SDL_WM_ToggleFullScreen) static func(Surface*)
 	loadBMP: extern(SDL_LoadBMP) static func(String) -> Surface*
-	getVideoInfo: extern(SDL_GetVideoInfo) static func() -> 
+	getVideoInfo: extern(SDL_GetVideoInfo) static func() -> VideoInfo*
+	GL_SetAttribute: extern (SDL_GL_SetAttribute) static func (Int,Int)
 	//linkedVersion: extern(SDL_Linked_Version) static func() -> const SDL_version*
 }
