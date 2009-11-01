@@ -11,32 +11,37 @@ use sdl
 	INIT_EVENTTHREAD : extern (SDL_INIT_EVENTTHREAD) const Int
 	INIT_EVERYTHING  : extern (SDL_INIT_EVERYTHING) const Int
 	
-	SWSURFACE: extern(SDL_SWSURFACE)	const Int/* Surface is in system memory */
-	HWSURFACE: extern(SDL_HWSURFACE)	const Int/* Surface is in video memory */
-	ASYNCBLIT: extern(SDL_ASYNCBLIT)	const Int/* Use asynchronous blits if possible */
+	SDL_SWSURFACE: extern(SDL_SWSURFACE)	const Int/* Surface is in system memory */
+	SDL_HWSURFACE: extern(SDL_HWSURFACE)	const Int/* Surface is in video memory */
+	SDL_ASYNCBLIT: extern(SDL_ASYNCBLIT)	const Int/* Use asynchronous blits if possible */
 	
 	/* Available for SDL_SetVideoMode() */
-	ANYFORMAT: extern(SDL_ANYFORMAT)	const Int/* Allow any video depth/pixel-format */
-	HWPALETTE: extern(SDL_HWPALETTE)	const Int/* Surface has exclusive palette */
-	DOUBLEBUF: extern(SDL_DOUBLEBUF)	const Int/* Set up double-buffered video mode */
-	FULLSCREEN: extern (SDL_FULLSCREEN)	const Int/* Surface is a full screen display */
-	OPENGL: extern(SDL_OPENGL) 			const Int/* Create an OpenGL rendering context */
-	sOPENGLBLIT: extern(SDL_OPENGLBLIT)	const Int/* Create an OpenGL rendering context and use it for blitting */
-	RESIZABLE: extern(SDL_RESIZABLE)	const Int/* This video mode may be resized */
-	NOFRAME: extern(SDL_NOFRAME)		const Int/* No window caption or edge frame */
+	SDL_ANYFORMAT: extern(SDL_ANYFORMAT)	const Int/* Allow any video depth/pixel-format */
+	SDL_HWPALETTE: extern(SDL_HWPALETTE)	const Int/* Surface has exclusive palette */
+	SDL_DOUBLEBUF: extern(SDL_DOUBLEBUF)	const Int/* Set up double-buffered video mode */
+	SDL_FULLSCREEN: extern (SDL_FULLSCREEN)	const Int/* Surface is a full screen display */
+	SDL_OPENGL: extern(SDL_OPENGL) 			const Int/* Create an OpenGL rendering context */
+	SDL_OPENGLBLIT: extern(SDL_OPENGLBLIT)	const Int/* Create an OpenGL rendering context and use it for blitting */
+	SDL_RESIZABLE: extern(SDL_RESIZABLE)	const Int/* This video mode may be resized */
+	SDL_NOFRAME: extern(SDL_NOFRAME)		const Int/* No window caption or edge frame */
 	
 	/* Used internally (read-only) */
-	HWACCEL: extern(SDL_HWACCEL)		const Int/* Blit uses hardware acceleration */
-	SRCCOLORKEY: extern(SDL_SRCCOLORKEY)const Int/* Blit uses a source color key */
-	RLEACCELOK: extern(SDL_RLEACCELOK)	const Int/* Private flag */
-	RLEACCEL: extern(SDL_RLEACCEL)		const Int/* Surface is RLE encoded */
-	SRCALPHA: extern(SDL_SRCALPHA)		const Int/* Blit uses source alpha blending */
-	PREALLOC: extern(SDL_PREALLOC)		const Int/* Surface uses preallocated memory */
+	SDL_HWACCEL: extern(SDL_HWACCEL)		const Int/* Blit uses hardware acceleration */
+	SDL_SRCCOLORKEY: extern(SDL_SRCCOLORKEY)const Int/* Blit uses a source color key */
+	SDL_RLEACCELOK: extern(SDL_RLEACCELOK)	const Int/* Private flag */
+	SDL_RLEACCEL: extern(SDL_RLEACCEL)		const Int/* Surface is RLE encoded */
+	SDL_SRCALPHA: extern(SDL_SRCALPHA)		const Int/* Blit uses source alpha blending */
+	SDL_PREALLOC: extern(SDL_PREALLOC)		const Int/* Surface uses preallocated memory */
 	
 	Surface: cover from SDL_Surface {
 		w: extern Int
 		h: extern Int
 		pixels: extern Int
+	}
+	
+	VideoInfo: cover from SDL_VideoInfo {
+		hw_avalaible: extern Int
+		blit_hw: extern Int
 	}
 	
 	SDL_QUIT: extern(SDL_QUIT) 			const Int
@@ -66,5 +71,6 @@ SDL: cover {
 	warpMouse: extern(SDL_WarpMouse) static func(Int,Int)
 	WM_GrabInput: extern(SDL_WM_GrabInput) static func(Int)
 	loadBMP: extern(SDL_LoadBMP) static func(String) -> Surface*
+	getVideoInfo: extern(SDL_GetVideoInfo) static func() -> 
 	//linkedVersion: extern(SDL_Linked_Version) static func() -> const SDL_version*
 }
