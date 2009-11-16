@@ -47,6 +47,7 @@ use sdl
 	
 	SDL_QUIT: extern(SDL_QUIT) 			const Int
 	SDL_KEYDOWN: extern(SDL_KEYDOWN) 	const Int
+	SDL_KEYUP: extern(SDL_KEYDOWN) 	const Int
 	SDL_DISABLE: extern(SDL_DISABLE)	const Int
 	SDL_GRAB_ON: extern(SDL_GRAB_ON) 	const Int 
 	
@@ -75,5 +76,6 @@ SDL: cover {
 	loadBMP: extern(SDL_LoadBMP) static func(String) -> Surface*
 	getVideoInfo: extern(SDL_GetVideoInfo) static func() -> VideoInfo*
 	GL_SetAttribute: extern (SDL_GL_SetAttribute) static func (Int,Int)
+	getModState: extern(SDL_GetModState) static func () -> Int
 	//linkedVersion: extern(SDL_Linked_Version) static func() -> const SDL_version*
 }

@@ -10,6 +10,10 @@ Keysym: cover from SDL_keysym {
 	sym: extern Int
 }
 
+Button: cover from SDL_MouseButtonEvent {
+	button: extern Int
+}
+
 Active: cover from SDL_ActiveEvent {
 	gain: extern UInt8
 }
@@ -28,6 +32,7 @@ Event: cover from SDL_Event {
 	motion: extern Motion
 	active: extern Active
 	resize: extern Resize
+	button: extern Button
 }
 
 
@@ -290,10 +295,20 @@ SDLEvent: cover {
 	SDLK_UNDO		= 322 : extern const Int		/* Atari keyboard has Undo */
 
 	/* Add any other keys here */
-
+	
+	SDL_MOUSEBUTTONUP: extern const Int
+	SDL_MOUSEBUTTONDOWN: extern const Int
+	SDL_BUTTON_WHEELUP: extern const Int
+	SDL_BUTTON_RIGHT: extern const Int
+	SDL_BUTTON_LEFT: extern const Int
+	SDL_BUTTON_WHEELDOWN: extern const Int
 
 	SDL_MOUSEMOTION : extern const Int
 	
 	SDL_ACTIVEEVENT : extern const Int
 	
 	SDL_VIDEORESIZE : extern const Int
+	
+	
+	KMOD_LCTRL : extern const Int
+	KMOD_RCTRL : extern const Int
