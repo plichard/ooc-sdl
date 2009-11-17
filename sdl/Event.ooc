@@ -8,6 +8,7 @@ Motion: cover from SDL_MouseMotionEvent {
 
 Keysym: cover from SDL_keysym {
 	sym: extern Int
+    unicode: extern Int
 }
 
 Button: cover from SDL_MouseButtonEvent {
@@ -310,5 +311,8 @@ SDLEvent: cover {
 	SDL_VIDEORESIZE : extern const Int
 	
 	
-	KMOD_LCTRL : extern const Int
-	KMOD_RCTRL : extern const Int
+	KMOD_LCTRL  : extern const Int
+	KMOD_RCTRL  : extern const Int
+    KMOD_SHIFT  : extern const Int
+    KMOD_LSHIFT : extern const Int
+    KMOD_RSHIFT : extern const Int

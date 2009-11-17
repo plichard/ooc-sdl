@@ -78,4 +78,6 @@ SDL: cover {
 	GL_SetAttribute: extern (SDL_GL_SetAttribute) static func (Int,Int)
 	getModState: extern(SDL_GetModState) static func () -> Int
 	//linkedVersion: extern(SDL_Linked_Version) static func() -> const SDL_version*
+    
+    enableUnicode: extern(SDL_EnableUNICODE) static func(enable: Int)
 }
