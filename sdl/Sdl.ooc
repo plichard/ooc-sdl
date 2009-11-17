@@ -77,6 +77,7 @@ SDL: cover {
 	getVideoInfo: extern(SDL_GetVideoInfo) static func() -> VideoInfo*
 	GL_SetAttribute: extern (SDL_GL_SetAttribute) static func (Int,Int)
 	getModState: extern(SDL_GetModState) static func () -> Int
+	delay: extern(SDL_Delay) static func(UInt32)
 	//linkedVersion: extern(SDL_Linked_Version) static func() -> const SDL_version*
     
     enableUnicode: extern(SDL_EnableUNICODE) static func(enable: Int)
