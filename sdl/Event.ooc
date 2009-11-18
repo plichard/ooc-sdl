@@ -297,6 +297,8 @@ SDLEvent: cover {
 
 	/* Add any other keys here */
 	
+	SDL_VIDEOEXPOSE: extern const Int
+	
 	SDL_MOUSEBUTTONUP: extern const Int
 	SDL_MOUSEBUTTONDOWN: extern const Int
 	SDL_BUTTON_WHEELUP: extern const Int
