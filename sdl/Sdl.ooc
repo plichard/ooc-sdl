@@ -34,6 +34,14 @@ use sdl
 	SDL_SRCALPHA: extern(SDL_SRCALPHA)		const Int/* Blit uses source alpha blending */
 	SDL_PREALLOC: extern(SDL_PREALLOC)		const Int/* Surface uses preallocated memory */
 	
+	
+	SDL_GL_ALPHA_SIZE  : extern(SDL_GL_ALPHA_SIZE)	const Int
+	SDL_GL_RED_SIZE    : extern(SDL_GL_RED_SIZE)	const Int       
+	SDL_GL_GREEN_SIZE  : extern(SDL_GL_GREEN_SIZE)  const Int     
+	SDL_GL_BLUE_SIZE   : extern(SDL_GL_BLUE_SIZE) 	const Int      
+	SDL_GL_DEPTH_SIZE  : extern(SDL_GL_DEPTH_SIZE) 	const Int  
+	SDL_GL_DOUBLEBUFFER: extern(SDL_GL_DOUBLEBUFFER)const Int
+	
 	Surface: cover from SDL_Surface {
 		w: extern Int
 		h: extern Int
@@ -77,6 +85,8 @@ SDL: cover {
 	getVideoInfo: extern(SDL_GetVideoInfo) static func() -> VideoInfo*
 	GL_SetAttribute: extern (SDL_GL_SetAttribute) static func (Int,Int)
 	getModState: extern(SDL_GetModState) static func () -> Int
+	getKeyState: extern(SDL_GetKeyState) static func (Int*) -> UChar*
+	getRelativeMouseState: extern(SDL_GetRelativeMouseState) static func(Int*, Int*) -> UInt8
 	delay: extern(SDL_Delay) static func(UInt32)
 	//linkedVersion: extern(SDL_Linked_Version) static func() -> const SDL_version*
     

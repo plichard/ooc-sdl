@@ -40,6 +40,7 @@ Event: cover from SDL_Event {
 SDLEvent: cover {
 	wait: extern(SDL_WaitEvent) static func(Event*) -> Int
 	poll: extern(SDL_PollEvent) static func(Event*) -> Int
+	pump: extern(SDL_PumpEvents) static func
 }
 
 
