@@ -91,5 +91,5 @@ SDL: cover {
 	delay: extern(SDL_Delay) static func(UInt32)
 	//linkedVersion: extern(SDL_Linked_Version) static func() -> const SDL_version*
     
-    enableUnicode: extern(SDL_EnableUNICODE) static func(enable: Int)
+    enableUnicode: extern(SDL_EnableUNICODE) static func(enable: Bool)
 }
