@@ -40,15 +40,16 @@ SDL_GL_BLUE_SIZE   : extern(SDL_GL_BLUE_SIZE) 	const Int
 SDL_GL_DEPTH_SIZE  : extern(SDL_GL_DEPTH_SIZE) 	const Int  
 SDL_GL_DOUBLEBUFFER: extern(SDL_GL_DOUBLEBUFFER)const Int
 
-Rectangle: cover from SDL_Rect {
+SdlRectangle: cover from SDL_Rect {
     x, y: extern Int16
     w, h: extern UInt16
 }
 
-Surface: cover from SDL_Surface {
+SdlSurface: cover from SDL_Surface {
     w: extern Int
     h: extern Int
-    pixels: extern Int
+    pixels: extern Pointer
+    pitch: UInt16
 }
 
 VideoInfo: cover from SDL_VideoInfo {
@@ -56,7 +57,6 @@ VideoInfo: cover from SDL_VideoInfo {
     blit_hw: extern Int
 }
 
-SDL_QUIT: extern(SDL_QUIT) 			const Int
 SDL_ENABLE: extern(SDL_ENABLE) 		const Int
 SDL_DISABLE: extern(SDL_DISABLE)	const Int
 SDL_GRAB_ON: extern(SDL_GRAB_ON) 	const Int 
@@ -82,8 +82,8 @@ SDL: cover {
 	showCursor: extern(SDL_ShowCursor) static func(Int)
 	warpMouse: extern(SDL_WarpMouse) static func(Int,Int)
 	WM_GrabInput: extern(SDL_WM_GrabInput) static func(Int)
-	WM_ToggleFullScreen: extern(SDL_WM_ToggleFullScreen) static func(Surface*)
-	loadBMP: extern(SDL_LoadBMP) static func(String) -> Surface*
+	WM_ToggleFullScreen: extern(SDL_WM_ToggleFullScreen) static func(SdlSurface*)
+	loadBMP: extern(SDL_LoadBMP) static func(String) -> SdlSurface*
 	getVideoInfo: extern(SDL_GetVideoInfo) static func() -> VideoInfo*
 	GL_SetAttribute: extern (SDL_GL_SetAttribute) static func (Int,Int)
 	getModState: extern(SDL_GetModState) static func () -> Int
